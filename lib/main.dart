@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Constructor Demo',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('メンバーリスト'),
+            title: Text('member list'),
           ),
           body: SingleChildScrollView(
             child: Center(
@@ -41,6 +41,11 @@ class MemberCard extends StatefulWidget {
   final Color backgroundColor; //背景色
   final statusIcon; //メンバーのステータス
 
+  ///下記のコンストラクタはリダイレクトコンストラクタと言って、
+  ///例えばMembersCard.normalのコンストラクタが呼び出されると、
+  ///そのパラメーターがMembersCard._init(this._init)に伝搬されて、初期化される
+  ///その初期化したのを元にWidgetを作成する事が出来る。
+
   // 通常のユーザー
   MemberCard.normal({name, imgFileName})
       : this._init(
@@ -57,7 +62,7 @@ class MemberCard extends StatefulWidget {
             name: name,
             imgFileName: imgFileName,
             backgroundColor: Colors.black12,
-            statusIcon: Text('退会済み'));
+            statusIcon: Text('check out'));
 
   MemberCard._init({
     Key? key,
